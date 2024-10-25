@@ -1,4 +1,4 @@
-
+###Disclaimer: Dette er genereret av ChatGPT, se alternativt guide her: https://code.visualstudio.com/docs/python/python-tutorial
 ### Veiledning: Sette opp og kjøre Python i Visual Studio Code (VS Code)
 
 Å sette opp og kjøre Python i Visual Studio Code (VS Code) er et flott valg for utviklere fordi det gir et lettvektsmiljø med utmerket støtte for Python. Her er en steg-for-steg veiledning du kan følge og dele under din workshop.
@@ -21,7 +21,7 @@
    - I søkefeltet, skriv **"Python"**.
    - Installer Python-utvidelsen utviklet av Microsoft. Denne utvidelsen gir rik støtte for Python, inkludert IntelliSense (autofullføring), linting, debugging og mer.
 
-### 4. **Konfigurer Python-tolken i VS Code**
+### 4. **Konfigurer Python-interpreter i VS Code**
    - Etter at Python-utvidelsen er installert, må VS Code vite hvilken Python-tolk som skal brukes.
    - **Velg tolk**:
      - Åpne **Kommando-paletten** (`Ctrl+Shift+P` eller `Cmd+Shift+P`).
