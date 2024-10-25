@@ -1,0 +1,89 @@
+
+Sammendrag
+Denne koden implementerer en Retrieval-Augmented Generation (RAG) pipeline ved å hente inn dokumenter fra en spesifisert mappe, generere embeddings for dokumentene, hente relevante dokumenter basert på en brukerforespørsel, og generere et svar på forespørselen ved å bruke OpenAI sin API.
+
+Biblioteker og avhengigheter
+Koden importerer følgende moduler og pakker:
+
+- os: For å navigere i filsystemet og hente filnavn.
+- openai: For å bruke OpenAI sin API til å generere embeddings og svare på brukerforespørselen.
+- CharacterTextSplitter: For å splitte opp tekst i mindre deler, men i denne versjonen brukes det ikke.
+- TextLoader: For å laste inn tekstfiler fra en spesifisert mappe.
+- numpy (np): For å beregne kosinus-similaritet mellom embeddings.
+- dotenv: For å laste inn miljøvariabler fra en .env-fil, som kan inneholde API-nøkler.
+
+Funksjoner
+1. rag_pipeline(directory_path, user_query)
+Dette er hovedfunksjonen for RAG-pipelinen. Den utfører følgende trinn:
+
+- Laster inn dokumenter fra en gitt katalog.
+- Genererer embeddings for hvert dokument.
+- Henter de mest relevante dokumentene basert på brukerens forespørsel.
+- Genererer et svar basert på brukerforespørselen og de relevante dokumentene.
+
+Parametere:
+- directory_path: Stien til mappen som inneholder dokumentene som skal lastes inn.
+- user_query: Forespørselen som brukeren stiller.
+
+Returverdi: Et generert svar fra OpenAI-baserte modell.
+
+2. load_documents(directory_path)
+Denne funksjonen laster inn dokumenter fra en spesifisert mappe.
+
+- Går gjennom alle filene i den angitte mappen.
+- Laster kun inn .txt-filer.
+- Bruker TextLoader til å hente innholdet av hver tekstfil.
+
+Parametere:
+- directory_path: Stien til mappen hvor tekstfilene befinner seg.
+
+Returverdi: En liste av lastede dokumenter.
+
+3. embed_documents(documents)
+Genererer embeddings for en liste med dokumenter ved å bruke OpenAI sin embeddings-API.
+
+- For hver dokumenttekst i listen, sender den en forespørsel til OpenAI sitt embeddings-endepunkt.
+- Embeddingene lagres i en liste og returneres som en numpy-array.
+
+Parametere:
+- documents: En liste over dokumenter som skal embeddes.
+
+Returverdi: En liste av numpy-arrays som inneholder embeddingene for hvert dokument.
+
+4. retrieve_relevant_docs(documents, embeddings, query)
+Denne funksjonen finner de mest relevante dokumentene basert på brukerens forespørsel ved hjelp av kosinus-similaritet.
+
+- Embedder brukerens forespørsel.
+- Beregner kosinus-similaritet mellom forespørsels-embedding og dokument-embeddingene.
+- Returnerer de tre mest relevante dokumentene.
+
+Parametere:
+- documents: En liste over dokumenter.
+- embeddings: En liste over embeddingene til dokumentene.
+- query: Brukerens forespørsel som tekststreng.
+
+Returverdi: En liste over de mest relevante dokumentene.
+
+5. generate_answer(relevant_docs, query)
+Genererer et svar ved å bruke OpenAI sin chat-modell basert på konteksten fra de relevante dokumentene.
+
+- Samler inn tekstinnholdet fra de relevante dokumentene.
+- Bruker OpenAI sin chat.completions.create til å generere et svar.
+
+Parametere:
+- relevant_docs: En liste med de mest relevante dokumentene.
+- query: Brukerens forespørsel.
+
+Returverdi: Det genererte svaret fra modellen.
+
+Hvordan RAG-pipelinen fungerer
+1. Laste inn dokumenter: Dokumenter lastes inn fra en angitt mappe som inneholder tekstfiler. Dette gjøres ved å bruke TextLoader, som åpner og leser innholdet i hver fil.
+
+2. Generere embeddings: Etter at dokumentene er lastet, genereres embeddings for dem ved å bruke OpenAI's embeddings API. Dette innebærer å konvertere hvert dokument til en numerisk representasjon, som gjør det mulig å sammenligne dem med brukerens forespørsel.
+
+3. Hente relevante dokumenter: Brukerens forespørsel konverteres til en embedding, og det beregnes kosinus-similaritet mellom forespørselen og dokument-embeddingene for å finne de mest relevante dokumentene.
+
+4. Generere svar: OpenAI’s chat-modell brukes til å generere et svar på brukerens forespørsel ved å bruke konteksten fra de mest relevante dokumentene. Modellen tar inn både brukerens spørsmål og konteksten og returnerer et fullstendig svar.
+
+Eksempelbruk
+Kjøring av skriptet starter en forespørsel til brukeren om å angi en spørsmålsstreng. Deretter kjøres RAG-pipelinen mot dokumentene i en mappe (i dette tilfellet "./data") for å finne et passende svar basert på dokumentenes innhold.
