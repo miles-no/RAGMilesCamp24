@@ -1,0 +1,108 @@
+
+### Veiledning: Sette opp og kjøre Python i Visual Studio Code (VS Code)
+
+Å sette opp og kjøre Python i Visual Studio Code (VS Code) er et flott valg for utviklere fordi det gir et lettvektsmiljø med utmerket støtte for Python. Her er en steg-for-steg veiledning du kan følge og dele under din workshop.
+
+### 1. **Installer Visual Studio Code**
+   - **Last ned og installer**: Besøk [VS Codes offisielle nettside](https://code.visualstudio.com/) og last ned riktig versjon for operativsystemet ditt (Windows, macOS eller Linux). Følg installasjonsstegene som er oppgitt for ditt OS.
+
+### 2. **Installer Python**
+   - **Last ned Python**: Gå til [Pythons offisielle nettside](https://www.python.org/downloads/) og last ned den nyeste versjonen av Python. Sørg for å merke av boksen "Add Python to PATH" før du installerer på Windows. På macOS og Linux er Python ofte forhåndsinstallert, men det er best å installere den nyeste versjonen manuelt.
+   - **Verifiser Python-installasjonen**:
+     - Åpne et terminalvindu og skriv:
+       ```
+       python --version
+       ```
+       Dette skal vise versjonen av Python du har installert. Hvis du får en feil, må du kanskje legge til Python i systemets PATH manuelt.
+
+### 3. **Installer Python-utvidelsen for VS Code**
+   - **Åpne VS Code**.
+   - Gå til **Utvidelsesvisningen** ved å klikke på utvidelsesikonet i venstre sidebar eller bruk `Ctrl+Shift+X` (Windows/Linux) eller `Cmd+Shift+X` (macOS).
+   - I søkefeltet, skriv **"Python"**.
+   - Installer Python-utvidelsen utviklet av Microsoft. Denne utvidelsen gir rik støtte for Python, inkludert IntelliSense (autofullføring), linting, debugging og mer.
+
+### 4. **Konfigurer Python-tolken i VS Code**
+   - Etter at Python-utvidelsen er installert, må VS Code vite hvilken Python-tolk som skal brukes.
+   - **Velg tolk**:
+     - Åpne **Kommando-paletten** (`Ctrl+Shift+P` eller `Cmd+Shift+P`).
+     - Skriv og velg **Python: Select Interpreter**.
+     - Velg Python-tolken du installerte fra listen.
+
+   Hvis du installerte Python via den offisielle nettsiden, bør den vises i listen. Hvis du bruker virtuelle miljøer (som `venv`), må du sørge for å velge riktig tolk.
+
+### 5. **Opprett en ny Python-fil**
+   - I VS Code, åpne en mappe for prosjektet ditt ved å navigere til `File -> Open Folder...`.
+   - Når mappen er åpnet, høyreklikk i filutforskeren (eller trykk `Ctrl+N`), og lagre filen med en `.py`-utvidelse (f.eks. `hello.py`).
+
+### 6. **Skriv og kjør Python-kode**
+   - Åpne den nye Python-filen og skriv et enkelt Python-skript som:
+     ```python
+     print("Hei, verden!")
+     ```
+   - **Kjør koden**:
+     - Du kan kjøre skriptet på to hovedmåter:
+       1. **Kjør i terminalen**: Høyreklikk hvor som helst i kodeeditoren og velg **Run Python File in Terminal**. Koden vil bli kjørt i VS Codes integrerte terminal.
+       2. **Bruk avspillingsknappen**: Det skal være en liten avspillingsknapp i øvre høyre hjørne av editoren når du åpner en `.py`-fil. Klikk på denne for å kjøre skriptet.
+
+### 7. **Sette opp et Python-virtuelt miljø (valgfritt, men anbefalt)**
+   Bruk av et virtuelt miljø isolerer Python-prosjektene dine fra systemavhengigheter, og forhindrer potensielle konflikter.
+
+   - Åpne terminalen i VS Code (`Ctrl+ eller Cmd+`).
+   - **Opprett et virtuelt miljø**:
+     ```bash
+     python -m venv venv
+     ```
+     Dette vil opprette en mappe kalt `venv` i prosjektmappen din.
+   - **Aktiver det virtuelle miljøet**:
+     - På **Windows**:
+       ```bash
+       .env\Scriptsctivate
+       ```
+     - På **macOS/Linux**:
+       ```bash
+       source venv/bin/activate
+       ```
+     Du skal se `(venv)` vises i terminalprompten din, noe som indikerer at det virtuelle miljøet er aktivt.
+   - **Velg det virtuelle miljøet i VS Code**:
+     - Gå til kommando-paletten (`Ctrl+Shift+P` eller `Cmd+Shift+P`) og velg **Python: Select Interpreter**.
+     - Velg `venv`-tolken fra listen.
+
+### 8. **Installer Python-pakker**
+   - Hvis prosjektet ditt krever ytterligere Python-biblioteker, kan du installere dem ved hjelp av `pip`. Sørg for at det virtuelle miljøet er aktivt (hvis du bruker ett).
+   - I terminalen, skriv:
+     ```bash
+     pip install package_name
+     ```
+   - For eksempel, for å installere `numpy`, skriver du:
+     ```bash
+     pip install numpy
+     ```
+
+### 9. **Linting og formatering**
+   - Python-utvidelsen aktiverer automatisk linting (sanntids feil-/advarselsrapportering). Du kan konfigurere lintern ved å åpne kommando-paletten (`Ctrl+Shift+P`) og søke etter **Python: Select Linter**. Populære linters inkluderer `pylint`, `flake8`, og `black` (for kodeformatering).
+   - **Aktiver automatisk formatering**:
+     - Du kan også formatere koden automatisk ved å høyreklikke i editoren og velge **Format Document**. Dette sikrer at koden din følger en konsistent stil.
+
+### 10. **Debugging av Python i VS Code**
+   - **Legg til brytepunkter**: Klikk til venstre for linjenummeret for å legge til et brytepunkt i koden.
+   - **Kjør debuggeren**:
+     - Åpne debug-panelet ved å klikke på feilrettingsikonet i venstre sidebar eller trykk `Ctrl+Shift+D`.
+     - Klikk på **Run and Debug** eller trykk `F5`. VS Code vil pause kjøringen ved brytepunktene, slik at du kan inspisere variabler og gå gjennom koden steg for steg.
+
+### 11. **Versjonskontroll med Git (valgfritt)**
+   - **Initialiser Git**: Åpne en terminal og kjør:
+     ```bash
+     git init
+     ```
+   - **Commit endringer**: Du kan administrere Git-commits direkte i VS Code ved hjelp av kildekontrollikonet i venstre meny. Dette integreres godt med GitHub.
+   - Hvis du bruker GitHub, kan du også klone repositorier eller pushe kode fra den integrerte terminalen eller kildekontrollen.
+
+### 12. **Vanlige problemer og løsninger**
+   - **Python ikke funnet i terminalen**: Hvis `python` eller `python3` ikke blir gjenkjent i terminalen, må du kanskje legge til Python i systemets PATH eller manuelt angi det i VS Codes innstillinger.
+   - **Flere Python-versjoner installert**: Noen ganger har systemer både Python 2 og Python 3 installert. Sørg for at du bruker Python 3.x ved å velge riktig tolk.
+
+---
+
+Med denne veiledningen vil deltakerne på din workshop ha en klar forståelse av hvordan de setter opp og kjører Python i VS Code. Den dekker grunnleggende installasjon, virtuelle miljøer, kjøring av kode, debugging, og mer avanserte emner som linting og Git-integrasjon.
+
+Tilpass gjerne veiledningen for å passe nivået til publikumet ditt!
