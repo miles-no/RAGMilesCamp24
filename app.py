@@ -1,7 +1,7 @@
 import os
 from openai import OpenAI
 from langchain.text_splitter import CharacterTextSplitter
-from langchain_community.document_loaders import TextLoader
+from langchain.document_loaders import TextLoader
 import numpy as np
 from dotenv import load_dotenv
 load_dotenv()
