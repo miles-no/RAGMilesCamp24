@@ -2,9 +2,11 @@
 ###Disclaimer: Stort sett generert av ChatGPT, feil kan forekomme!
 
 Introduksjon
+
 Denne workshopen veileder deg gjennom oppsettet og bruken av en Retrieval-Augmented Generation (RAG) pipeline, som kombinerer dokumentgjenfinning og AI-genererte svar. Prosjektet bruker OpenAI sitt API for embeddings og chat-modeller til å svare på brukerforespørsler basert på innholdet i tekstfiler.
 
 Forutsetninger
+
 Før du starter, sørg for at du har følgende:
 
 Python 3.7 eller nyere installert.
@@ -28,7 +30,6 @@ Trinn 3: Installer avhengigheter
 Installer nødvendige Python-pakker ved å bruke requirements.txt-filen:
 
 bash
-Copy code
 pip install -r requirements.txt
 Trinn 4: Opprett en .env-fil
 For å bruke OpenAI API, må du sette opp en miljøvariabel for API-nøkkelen din. Dette gjøres ved å opprette en .env-fil i rotmappen av prosjektet.
