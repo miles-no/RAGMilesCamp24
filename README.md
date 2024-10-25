@@ -17,6 +17,7 @@ Trinn 1: Klone prosjektet
 Start med å klone prosjektet fra GitHub:
 
 bash
+
 git clone https://github.com/miles-no/RAGMilesCamp24.git
 cd RAGMilesCamp24
 
@@ -63,6 +64,7 @@ Trinn 6: Kjør programmet
 Du er nå klar til å kjøre pipelinen. Kjør følgende kommando for å starte programmet:
 
 bash
+
 python app.py
 Programmet vil be deg om å skrive inn en brukerforespørsel, som deretter behandles ved å hente relevante dokumenter og generere et svar.
 
@@ -71,6 +73,7 @@ Trinn 7: Deaktiver virtuelt miljø
 Når du er ferdig med prosjektet, kan du deaktivere det virtuelle miljøet ved å kjøre:
 
 bash
+
 deactivate
 
 Feilsøking
